@@ -1,6 +1,6 @@
 # write tests for parsers
 
-from /seqparser import (
+from seqparser import (
         FastaParser,
         FastqParser)
 
@@ -34,10 +34,25 @@ def test_FastaParser():
     provided in /tests/bad.fa and /tests/empty.fa
     """
 
+    # test with bad fasta file
+    fa="tests/bad.fa"
+    with pytest.raises(ValueError) as out:  
+        list(FastaParser(fa))
+    # assert str(out.value) == "File (tests/bad.fa) had 0 lines."  
+    assert out.type==ValueError
     
-
+    # test with blank fasta file
+    fa="tests/blank.fa"
+    with pytest.raises(ValueError) as out:  
+        list(FastaParser(fa))
+    assert out.type==ValueError
     
-    pass
+    
+    # CHECK THAT IF A GOOD FILE IS READ IN, YOU GET THE CORRECT NUMBER OF LINES 
+    
+    # CHECK OTHER STUFF
+   
+    # pass
 
 
 def test_FastaFormat():
@@ -45,7 +60,14 @@ def test_FastaFormat():
     Test to make sure that a fasta file is being read in if a fastq file is
     read, the first item is None
     """
-    pass
+    # input fastq file into FastaParser
+    fq="data/test.fq"
+    out=list(FastaParser(fq))
+    
+    # check that the first item is None
+    assert out[0][0]==None
+    
+#     pass
 
 
 def test_FastqParser():
