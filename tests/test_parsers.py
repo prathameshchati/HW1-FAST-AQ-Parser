@@ -47,11 +47,11 @@ def test_FastaParser():
         list(FastaParser(fa))
     assert out.type==ValueError
     
+    # test with good fasta file which has a 100 sequences
+    fa="data/test.fa"
+    out=list(FastaParser(fa))
+    assert len(out)==100
     
-    # CHECK THAT IF A GOOD FILE IS READ IN, YOU GET THE CORRECT NUMBER OF LINES 
-    
-    # CHECK OTHER STUFF
-   
     # pass
 
 
@@ -76,7 +76,24 @@ def test_FastqParser():
     an instance of your FastqParser class and assert that it properly reads 
     in the example Fastq File.
     """
-    pass
+    # test with bad fastq file
+    fq="tests/bad.fq"
+    with pytest.raises(ValueError) as out:  
+        list(FastqParser(fq))
+    assert out.type==ValueError
+    
+    # test with blank fastq file
+    fq="tests/blank.fq"
+    with pytest.raises(ValueError) as out:  
+        list(FastqParser(fq))
+    assert out.type==ValueError
+    
+    # test with good fastq file which has a 100 sequences
+    fq="data/test.fq"
+    out=list(FastqParser(fq))
+    assert len(out)==100    
+    
+#     pass
 
 def test_FastqFormat():
     """

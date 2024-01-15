@@ -18,7 +18,7 @@ def main():
     # and print it to console
     
     print("\n")
-    print("FASTA SEQUENCES", "\n")
+    print("TRANSCRIBED FASTA SEQUENCES", "\n")
     for seq in fa_out:
         print(f"{seq[0]}: {transcribe(seq[1])}")
     print("\n")
@@ -26,17 +26,27 @@ def main():
     # For each record of FastqParser, Transcribe the sequence
     # and print it to console
 
-    print("FASTQ SEQUENCES", "\n")
+    print("TRANSCRIBED FASTQ SEQUENCES", "\n")
     for seq in fq_out:
         print(f"{seq[0]}: {transcribe(seq[1])}")
     print("\n")
-    
    
     # For each record of FastaParser, Reverse Transcribe the sequence
     # and print it to console
+    
+    print("\n")
+    print("REVERSE TRANSCRIBED FASTA SEQUENCES", "\n")
+    for seq in fa_out:
+        print(f"{seq[0]}: {reverse_transcribe(seq[1])}")
+    print("\n")
        
     # For each record of FastqParser, Reverse Transcribe the sequence
     # and print it to console
+
+    print("REVERSE TRANSCRIBED FASTQ SEQUENCES", "\n")
+    for seq in fq_out:
+        print(f"{seq[0]}: {reverse_transcribe(seq[1])}")
+    print("\n")
 
 
 """
