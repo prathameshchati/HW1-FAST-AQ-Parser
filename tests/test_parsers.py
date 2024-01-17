@@ -67,6 +67,13 @@ def test_FastaFormat():
     # check that the first item is None
     assert out[0][0]==None
     
+    # input fasta file 
+    fa="data/test.fa"
+    out=list(FastaParser(fa))
+
+    # check that first item is not none
+    assert out[0][0]!=None
+    
 #     pass
 
 
@@ -100,4 +107,18 @@ def test_FastqFormat():
     Test to make sure fastq file is being read in. If this is a fasta file, the
     first line is None
     """
-    pass
+     # input fasta file into FastqParser
+    fa="data/test.fa"
+    out=list(FastqParser(fa))
+
+    # check that first item is none
+    assert out[0][0]==None
+    
+    # input fastq file
+    fq="data/test.fq"
+    out=list(FastqParser(fq))
+    
+    # check that the first item is not None
+    assert out[0][0]!=None
+    
+#     pass
